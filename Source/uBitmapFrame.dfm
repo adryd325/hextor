@@ -236,10 +236,10 @@ object BitmapFrame: TBitmapFrame
         '1 bit'
         '2 bits'
         '4 bits'
-        '1 byte'
-        '2 bytes'
-        '3 bytes'
-        '4 bytes')
+        '1 byte (2^8)'
+        '2 bytes (2^16)'
+        '3 bytes (2^24)'
+        '4 bytes (2^32)')
     end
     object EditPalette: TComboBox
       Left = 8
@@ -247,7 +247,7 @@ object BitmapFrame: TBitmapFrame
       Width = 65
       Height = 21
       Style = csDropDownList
-      ItemIndex = 6
+      ItemIndex = 8
       TabOrder = 1
       Text = 'RGB (2^24)'
       OnChange = EditPaletteChange
@@ -258,6 +258,8 @@ object BitmapFrame: TBitmapFrame
         'Red (256)'
         'Green (256)'
         'Blue (256)'
+        '565 (2^16)'
+        'X555 (2^16)'
         'RGB (2^24)'
         'BGR (2^24)')
     end

@@ -64,7 +64,7 @@ type
     TCardinalArray = array[0..0] of Cardinal;
     PCardinalArray = ^TCardinalArray;
   private const
-    ScalesList: array [0 .. 4] of Double = (0.25, 0.5, 1, 2, 4);
+    ScalesList: array [0 .. 6] of Double = (0.25, 0.5, 1, 2, 4, 8, 16);
     bppList: array [0 .. 6] of Integer = (1, 2, 4, 8, 16, 24, 32);
     st2: array [0 .. 7] of Byte = (1, 2, 4, 8, 16, 32, 64, 128);
     st4: array [0 .. 3] of Byte = (1, 4, 16, 64);
@@ -560,9 +560,13 @@ begin
       Result := (Value and $FF) * 256;
     5:
       Result := Value and $FF;
-    6:
-      Result := Value;
+    6: 
+      Result := RGB(((Value and $F800) >> 11) * 8, ((Value and $7E0) >> 5) * 4, (Value and $1F) * 8);
     7:
+      Result := RGB(((Value and $7C00) >> 11) * 8, ((Value and $3E0) >> 5) * 4, (Value and $1F) * 8);
+    8:
+      Result := Value;
+    9:
       Result := RGB(GetBValue(Value), GetGValue(Value), GetRValue(Value));
   else
     Result := 0;
